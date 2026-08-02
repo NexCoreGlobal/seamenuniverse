@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEAMEN STORIES — SEAMEN UNIVERSE</title>
+  <meta name="description" content="Humanity resurrects the two greatest naval commanders in history. One from the East. One from the West. But only together can they defeat the enemy rising from the abyss." />
+  <meta property="og:title" content="SEAMEN STORIES — SEAMEN UNIVERSE" />
+  <meta property="og:description" content="One from the East. One from the West. Only together can they save humanity." />
+  <meta property="og:image" content="The Golden Turtle Ship.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #07111f;
+      --navy-mid:  #0d1e33;
+      --navy-card: #0f2340;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8d08a;
+      --gold-dim:  #7a6228;
+      --white:     #f5f0e8;
+      --gray:      #8a96a8;
+      --border:    rgba(201,168,76,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: rgba(7,17,31,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: .8rem;
+      letter-spacing: .22em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gray); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 5vw 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(7,17,31,.35) 0%, rgba(7,17,31,.82) 70%, var(--navy) 100%),
+        url('The Golden Turtle Ship.jpg') center/cover no-repeat;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+    .universe-label {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem; letter-spacing: .3em;
+      color: var(--gold); margin-bottom: 1.6rem;
+      display: block;
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: .04em;
+      background: linear-gradient(160deg, #fff 30%, var(--gold-lt) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--gold-lt);
+      margin-bottom: 2.4rem;
+      line-height: 1.5;
+    }
+    .hero-rule {
+      width: 120px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 2.4rem;
+    }
+    .hero-logline {
+      font-size: clamp(.9rem, 1.8vw, 1.1rem);
+      color: rgba(245,240,232,.7);
+      max-width: 600px; margin: 0 auto 3.2rem;
+      line-height: 1.8;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: .8rem 2.2rem;
+      font-family: 'Cinzel', serif; font-size: .72rem;
+      letter-spacing: .18em; text-decoration: none;
+      border: 1px solid var(--gold); color: var(--gold);
+      transition: background .25s, color .25s;
+      cursor: pointer; background: transparent;
+    }
+    .btn:hover { background: var(--gold); color: var(--navy); }
+    .btn-solid { background: var(--gold); color: var(--navy); }
+    .btn-solid:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+
+    .hero-ships {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center; align-items: flex-end;
+      gap: 3rem; margin-top: 5rem;
+    }
+    .hero-ships img {
+      width: clamp(140px, 22vw, 260px);
+      filter: drop-shadow(0 0 40px rgba(201,168,76,.3));
+      transition: filter .4s;
+    }
+    .hero-ships img:hover { filter: drop-shadow(0 0 60px rgba(201,168,76,.55)); }
+
+    /* ── SECTIONS ────────────────────────────────── */
+    section { padding: 100px 5vw; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem; letter-spacing: .3em;
+      color: var(--gold); text-transform: uppercase;
+      display: block; margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 1.2rem; color: var(--white);
+    }
+    .section-rule {
+      width: 64px; height: 1px;
+      background: var(--gold);
+      margin-bottom: 2.4rem;
+    }
+    p { color: rgba(245,240,232,.72); font-size: .98rem; line-height: 1.85; }
+
+    /* ── CONCEPT ─────────────────────────────────── */
+    #concept { background: var(--navy-mid); }
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .concept-card {
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      padding: 2rem 1.8rem;
+    }
+    .concept-card .icon {
+      font-size: 1.6rem; margin-bottom: 1rem; display: block;
+    }
+    .concept-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: .88rem; letter-spacing: .12em;
+      color: var(--gold); margin-bottom: .7rem;
+    }
+    .concept-card p { font-size: .88rem; }
+
+    /* ── COMMANDERS ──────────────────────────────── */
+    #commanders { background: var(--navy); }
+    .vs-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0; margin-top: 3rem; align-items: stretch;
+    }
+    .commander-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      padding: 2.8rem 2.4rem;
+    }
+    .commander-card.east { border-right: none; }
+    .commander-card.west { border-left: none; }
+    .commander-portrait {
+      width: 100%; max-width: 160px;
+      margin-bottom: 1.6rem;
+      filter: sepia(.3) contrast(1.1);
+    }
+    .commander-role {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem; letter-spacing: .25em;
+      color: var(--gold); margin-bottom: .5rem; display: block;
+    }
+    .commander-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--white); margin-bottom: .3rem;
+    }
+    .commander-sub {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem; color: var(--gray);
+      margin-bottom: 1.4rem; display: block;
+    }
+    .commander-traits {
+      list-style: none; margin-bottom: 1.4rem;
+    }
+    .commander-traits li {
+      font-size: .85rem; color: rgba(245,240,232,.65);
+      padding: .3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .commander-traits li::before { content: '· '; color: var(--gold); }
+    .commander-quote {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 1rem; color: var(--gold-lt);
+      line-height: 1.6; margin-top: 1.2rem;
+    }
+    .vs-divider {
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(to bottom, var(--navy-card), var(--navy-card));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      width: 64px;
+    }
+    .vs-text {
+      font-family: 'Cinzel', serif;
+      font-size: .6rem; letter-spacing: .4em;
+      color: var(--gold); writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .contrast-table {
+      width: 100%; border-collapse: collapse;
+      margin-top: 3.5rem;
+      font-size: .85rem;
+    }
+    .contrast-table th {
+      font-family: 'Cinzel', serif; font-size: .65rem;
+      letter-spacing: .15em; color: var(--gold);
+      padding: .9rem 1.2rem; text-align: left;
+      background: rgba(201,168,76,.07);
+      border-bottom: 1px solid var(--border);
+    }
+    .contrast-table td {
+      padding: .85rem 1.2rem;
+      color: rgba(245,240,232,.7);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .contrast-table tr:hover td { background: rgba(255,255,255,.025); }
+    .key-line {
+      text-align: center; margin-top: 2.4rem;
+      font-family: 'Crimson Text', serif;
+      font-style: italic; font-size: 1.15rem;
+      color: var(--gold-lt);
+    }
+
+    /* ── ENEMY ───────────────────────────────────── */
+    #enemy { background: var(--navy-mid); }
+    .enemy-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      margin-top: 3rem;
+    }
+    .enemy-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .enemy-images img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      filter: hue-rotate(10deg) saturate(1.2);
+      border: 1px solid var(--border);
+    }
+    .enemy-points { list-style: none; margin-top: 1.4rem; }
+    .enemy-points li {
+      display: flex; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: .88rem; color: rgba(245,240,232,.7);
+    }
+    .enemy-points li .num {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem; color: var(--gold);
+      min-width: 28px; padding-top: .1rem;
+    }
+
+    /* ── TURTLE SHIP ─────────────────────────────── */
+    #turtleship { background: var(--navy); }
+    .ship-evolution {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2rem; margin: 3rem 0 4rem; flex-wrap: wrap;
+    }
+    .ship-stage { text-align: center; }
+    .ship-stage img {
+      width: clamp(160px, 20vw, 260px);
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,.5));
+    }
+    .ship-stage.golden img {
+      filter: drop-shadow(0 0 40px rgba(201,168,76,.45));
+    }
+    .ship-arrow {
+      font-size: 1.8rem; color: var(--gold-dim);
+      display: flex; align-items: center;
+    }
+    .ship-label {
+      font-family: 'Cinzel', serif; font-size: .65rem;
+      letter-spacing: .18em; color: var(--gray);
+      margin-top: .8rem; display: block;
+    }
+    .awakening-steps {
+      display: grid; grid-template-columns: repeat(6,1fr);
+      gap: .8rem; margin: 2rem 0 3.5rem;
+    }
+    .step {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1rem; text-align: center;
+    }
+    .step-num {
+      font-family: 'Cinzel', serif;
+      width: 28px; height: 28px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; color: var(--gold);
+      margin: 0 auto .8rem;
+    }
+    .step p { font-size: .77rem; line-height: 1.5; }
+    .abilities-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    .ability-card {
+      background: rgba(201,168,76,.06);
+      border: 1px solid var(--border);
+      padding: 1.8rem 1.6rem;
+    }
+    .ability-card .icon { font-size: 1.4rem; margin-bottom: .8rem; display: block; }
+    .ability-card h4 {
+      font-family: 'Cinzel', serif; font-size: .8rem;
+      letter-spacing: .1em; color: var(--gold);
+      margin-bottom: .6rem;
+    }
+    .ability-card p { font-size: .85rem; }
+    .awakening-trigger {
+      margin-top: 2.5rem; padding: 1.6rem 2rem;
+      border: 1px solid var(--gold-dim);
+      background: rgba(201,168,76,.04);
+      text-align: center;
+      font-family: 'Crimson Text', serif;
+      font-style: italic; font-size: 1.05rem;
+      color: var(--gold-lt); line-height: 1.7;
+    }
+
+    /* ── IP ──────────────────────────────────────── */
+    #ip { background: var(--navy-mid); }
+    .ip-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      margin-top: 2.5rem;
+    }
+    .ip-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    .ip-table td {
+      padding: .8rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      color: rgba(245,240,232,.7);
+    }
+    .ip-table td:first-child { color: var(--gold); font-weight: 500; width: 42%; }
+    .roadmap { list-style: none; }
+    .roadmap li {
+      display: flex; gap: 1.2rem;
+      padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .roadmap .tier {
+      font-family: 'Cinzel', serif; font-size: .65rem;
+      color: var(--gold); min-width: 60px; padding-top: .15rem;
+    }
+    .roadmap .desc { font-size: .88rem; color: rgba(245,240,232,.7); }
+
+    /* ── CONTACT ─────────────────────────────────── */
+    #contact {
+      background: var(--navy);
+      text-align: center;
+      padding: 100px 5vw;
+    }
+    .contact-logline {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--gold-lt);
+      max-width: 680px; margin: 1.5rem auto 2rem;
+      line-height: 1.6;
+    }
+    .contact-details {
+      display: flex; flex-direction: column;
+      align-items: center; gap: .5rem;
+      margin: 2.5rem auto;
+      font-size: .88rem; color: var(--gray);
+    }
+    .contact-details a { color: var(--gold); text-decoration: none; }
+    .contact-details a:hover { color: var(--gold-lt); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: rgba(0,0,0,.5);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5vw;
+      text-align: center;
+      font-size: .73rem; color: var(--gray);
+      letter-spacing: .06em;
+    }
+    footer .brand { color: var(--gold); font-family: 'Cinzel', serif; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .concept-grid { grid-template-columns: 1fr; }
+      .vs-grid { grid-template-columns: 1fr; }
+      .vs-divider { width: 100%; height: 48px; writing-mode: horizontal-tb; }
+      .vs-text { writing-mode: horizontal-tb; letter-spacing: .4em; }
+      .commander-card.east, .commander-card.west { border: 1px solid var(--border); }
+      .enemy-layout { grid-template-columns: 1fr; }
+      .awakening-steps { grid-template-columns: repeat(3,1fr); }
+      .abilities-grid { grid-template-columns: 1fr; }
+      .ip-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-ships { gap: 1.5rem; }
+      .awakening-steps { grid-template-columns: repeat(2,1fr); }
+      .contrast-table { font-size: .78rem; }
+      .contrast-table td, .contrast-table th { padding: .7rem .8rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">SEAMEN UNIVERSE</a>
+  <ul class="nav-links">
+    <li><a href="#concept">Concept</a></li>
+    <li><a href="#commanders">Commanders</a></li>
+    <li><a href="#enemy">The Enemy</a></li>
+    <li><a href="#turtleship">Turtle Ship</a></li>
+    <li><a href="#ip">IP & Franchise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="universe-label">SEAMEN UNIVERSE</span>
+    <h1>SEAMEN<br>STORIES</h1>
+    <p class="hero-sub">"One from the East. One from the West.<br>Only together can they save humanity."</p>
+    <div class="hero-rule"></div>
+    <p class="hero-logline">
+      In 2047, humanity resurrects the two greatest naval commanders in history
+      to lead its last fleet against an alien civilization awakened from the deep.
+    </p>
+    <div class="hero-cta-group">
+      <a class="btn btn-solid" href="#contact">Request Pitch Deck</a>
+      <a class="btn" href="#concept">Explore the Universe</a>
+    </div>
+  </div>
+  <div class="hero-ships">
+    <img src="Turtle Ship.jpg" alt="Iron-clad Turtle Ship" />
+    <img src="The Golden Turtle Ship.jpg" alt="Golden Turtle Ship — Bukhyeonmu" />
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="section-inner">
+    <span class="eyebrow">The World</span>
+    <h2>Technology Failed.<br>Leadership Must Prevail.</h2>
+    <div class="section-rule"></div>
+    <p style="max-width:620px">
+      2047. The Abyss — an alien civilization dormant for millennia in the Mariana Trench —
+      awakens and disables every satellite, drone, and AI system on Earth in 72 hours.
+      Humanity's most advanced naval forces collapse. There are no commanders left
+      who can lead a full-scale naval engagement by instinct alone.
+    </p>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <span class="icon">🌊</span>
+        <h3>The Last Frontier</h3>
+        <p>Humanity mastered land and sky through AI-driven warfare. The ocean — ancient, unpredictable — was the one frontier that never yielded to technology.</p>
+      </div>
+      <div class="concept-card">
+        <span class="icon">⚡</span>
+        <h3>System Collapse</h3>
+        <p>Abyss Bio-Frequency disables all satellites, drones, and AI simultaneously. Every modern weapon is blind. The battlefield returns to instinct, tide, and wind.</p>
+      </div>
+      <div class="concept-card">
+        <span class="icon">🧬</span>
+        <h3>Project Legend</h3>
+        <p>Humanity's last resort: DNA resurrection and memory reconstruction of history's two greatest naval strategists. East meets West on the final battlefield.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDERS -->
+<section id="commanders">
+  <div class="section-inner">
+    <span class="eyebrow">The Two Commanders</span>
+    <h2>East Meets West.<br>One Battlefield.</h2>
+    <div class="section-rule"></div>
+    <div class="vs-grid">
+      <!-- YI SUN-SIN -->
+      <div class="commander-card east">
+        <img class="commander-portrait" src="Yi Sun-sin.jpg" alt="Yi Sun-sin" />
+        <span class="commander-role">The Moral Shield</span>
+        <div class="commander-name">Yi Sun-sin</div>
+        <span class="commander-sub">이순신 — Korea, 1545–1598</span>
+        <ul class="commander-traits">
+          <li>23 battles · 23 victories · zero defeats</li>
+          <li>World's greatest naval commander, ranked #1</li>
+          <li>Tidal traps · psychological warfare · sacrifice</li>
+          <li>Awakens the Golden Turtle Ship through self-sacrifice</li>
+        </ul>
+        <p class="commander-quote">"살고자 하면 죽고, 죽고자 하면 산다."<br><em style="font-size:.85rem;color:var(--gray)">"Those who seek life will die; those who seek death will live."</em></p>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="vs-divider">
+        <span class="vs-text">E A S T &nbsp; M E E T S &nbsp; W E S T</span>
+      </div>
+
+      <!-- NELSON -->
+      <div class="commander-card west">
+        <img class="commander-portrait" src="nelson.png" alt="Horatio Nelson" />
+        <span class="commander-role">The Golden Sword</span>
+        <div class="commander-name">H. Nelson</div>
+        <span class="commander-sub">Horatio Nelson — Britain, 1758–1805</span>
+        <ul class="commander-traits">
+          <li>Hero of Trafalgar · Britain's greatest admiral</li>
+          <li>World's greatest naval commander, ranked #2</li>
+          <li>Crossing the T · decisive breakthrough · charisma</li>
+          <li>Creates the breach · Yi Sun-sin decides the war</li>
+        </ul>
+        <p class="commander-quote">"England expects that every man will do his duty."</p>
+      </div>
+    </div>
+
+    <!-- CONTRAST TABLE -->
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Yi Sun-sin (East)</th>
+          <th>H. Nelson (West)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Core Philosophy</td><td>Protect those worth protecting</td><td>Win at any cost</td></tr>
+        <tr><td>Combat Style</td><td>Terrain traps · tidal control</td><td>Crossing the T · frontal assault</td></tr>
+        <tr><td>Strategic Role</td><td>The Moral Axis</td><td>The Spearhead</td></tr>
+        <tr><td>Character Arc</td><td>Sacrifice → legend</td><td>Skeptic → believer → witness</td></tr>
+        <tr><td>Awakening</td><td>Golden Turtle Ship (Bukhyeonmu)</td><td>Breakthrough — creates the gap</td></tr>
+      </tbody>
+    </table>
+    <p class="key-line">"Nelson creates the breach. Yi Sun-sin decides the war."</p>
+  </div>
+</section>
+
+<!-- ENEMY -->
+<section id="enemy">
+  <div class="section-inner">
+    <span class="eyebrow">The Enemy</span>
+    <h2>Not a Conqueror.<br>A Refugee Civilization.</h2>
+    <div class="section-rule"></div>
+    <div class="enemy-layout">
+      <div>
+        <p>The Abyss are not villains — they are survivors. Defeated in an interplanetary war, they fled across the galaxy and chose Earth's ocean as their final sanctuary. For thousands of years they lay dormant, evolving, watching humanity grow. In 2047, they are ready.</p>
+        <ul class="enemy-points">
+          <li><span class="num">01</span>Defeated in their home planet's war — the last survivors of a dying civilization</li>
+          <li><span class="num">02</span>Chose Earth's deep ocean as refuge, not conquest — "a darkness to flee to"</li>
+          <li><span class="num">03</span>Fused with bedrock at 11,000m in the Mariana Trench for millennia</li>
+          <li><span class="num">04</span>Bio-Frequency disables all satellites, drones & AI simultaneously</li>
+          <li><span class="num">05</span>Non-linear, organic battle patterns — unpredictable by any algorithm</li>
+        </ul>
+      </div>
+      <div class="enemy-images">
+        <img src="abyss-1.jpg" alt="Abyss alien civilization" />
+        <img src="abyss-2.jpg" alt="Abyss awakening" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TURTLE SHIP -->
+<section id="turtleship">
+  <div class="section-inner">
+    <span class="eyebrow">The Golden Turtle Ship</span>
+    <h2>武器가 아닌, 象徵<br><span style="font-size:.6em;color:var(--gray)">Not a Weapon. A Symbol.</span></h2>
+    <div class="section-rule"></div>
+    <p style="max-width:640px">The Bukhyeonmu (北玄武) — the Black Tortoise of the North, one of the Four Guardians of East Asian mythology — manifests as the Golden Turtle Ship when Yi Sun-sin makes the ultimate sacrifice. It cannot be awakened by technology. Only by human will.</p>
+
+    <div class="ship-evolution">
+      <div class="ship-stage">
+        <img src="Turtle Ship.jpg" alt="Iron-clad Turtle Ship" />
+        <span class="ship-label">Iron-Clad Form</span>
+      </div>
+      <div class="ship-arrow">→</div>
+      <div class="ship-stage golden">
+        <img src="The Golden Turtle Ship.jpg" alt="Golden Turtle Ship" />
+        <span class="ship-label">Bukhyeonmu Awakened</span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1.2rem">6-STAGE AWAKENING SEQUENCE</h3>
+    <div class="awakening-steps">
+      <div class="step"><div class="step-num">①</div><p>Hexagonal patterns dim to life on the iron hull</p></div>
+      <div class="step"><div class="step-num">②</div><p>Polaris sends a single beam of light — strikes the bow</p></div>
+      <div class="step"><div class="step-num">③</div><p>Patterns ignite — gold spreads bow to stern</p></div>
+      <div class="step"><div class="step-num">④</div><p>Iron hull restructures into crystalline gold alloy</p></div>
+      <div class="step"><div class="step-num">⑤</div><p>Golden serpent emerges — coils the entire hull</p></div>
+      <div class="step"><div class="step-num">⑥</div><p>Serpent head opens its eyes — Plasma Serpent fires</p></div>
+    </div>
+
+    <div class="abilities-grid">
+      <div class="ability-card">
+        <span class="icon">🐢</span>
+        <h4>Black Turtle Barrier</h4>
+        <p>Nano-alloy armor transforms into Bukhyeonmu's shell — reflects and reverses all Abyss attacks.</p>
+      </div>
+      <div class="ability-card">
+        <span class="icon">🐍</span>
+        <h4>Plasma Serpent</h4>
+        <p>Twin energy streams from the serpent's head — binds and annihilates enemy vessels.</p>
+      </div>
+      <div class="ability-card">
+        <span class="icon">⭐</span>
+        <h4>Celestial Navigation</h4>
+        <p>Navigates by Polaris and star charts when GPS and AI are disabled. Activates only with Yi Sun-sin's intuition.</p>
+      </div>
+    </div>
+
+    <div class="awakening-trigger">
+      "Awakening Condition: The moment Yi Sun-sin places the lives of his crew and people above his own —<br>
+      not technology, but sacrifice, is the trigger."<br>
+      <span style="font-size:.85rem;color:var(--gray);font-style:normal">"나는 돌아오지 않을 것이다. 그러나 인류는 살 것이다."</span>
+    </div>
+  </div>
+</section>
+
+<!-- IP & FRANCHISE -->
+<section id="ip">
+  <div class="section-inner">
+    <span class="eyebrow">IP & Franchise</span>
+    <h2>A Global Universe.<br>Built to Expand.</h2>
+    <div class="section-rule"></div>
+    <div class="ip-grid">
+      <div>
+        <h3 style="font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.18em;color:var(--gold);margin-bottom:1.2rem">IP PROTECTION</h3>
+        <table class="ip-table">
+          <tr><td>Korean Copyright</td><td>C-2026-010486</td></tr>
+          <tr><td>WGA West v1</td><td>#2329744 · Treatment · 2026.2.5</td></tr>
+          <tr><td>WGA West v2</td><td>#2333497 · Screenplay · 2026.3.8</td></tr>
+          <tr><td>Trademark</td><td>SEAMEN UNIVERSE (filed)</td></tr>
+          <tr><td>Domain</td><td>seamenuniverse.com</td></tr>
+          <tr><td>Source Material</td><td>120-min Feature Screenplay (complete)</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.18em;color:var(--gold);margin-bottom:1.2rem">FRANCHISE ROADMAP</h3>
+        <ul class="roadmap">
+          <li>
+            <span class="tier">TIER 0</span>
+            <span class="desc">SEAMEN UNIVERSE — Master Brand</span>
+          </li>
+          <li>
+            <span class="tier">TIER 1</span>
+            <span class="desc">SEAMEN STORIES — Feature Film (Yi Sun-sin × Nelson)</span>
+          </li>
+          <li>
+            <span class="tier">TIER 2A</span>
+            <span class="desc">Animation Series — Legend of the Turtle Ship</span>
+          </li>
+          <li>
+            <span class="tier">TIER 2B</span>
+            <span class="desc">Spin-off — Nelson Origin</span>
+          </li>
+          <li>
+            <span class="tier">TIER 3A</span>
+            <span class="desc">Strategy Game — East vs West Naval Doctrine</span>
+          </li>
+          <li>
+            <span class="tier">TIER 3B</span>
+            <span class="desc">Edutainment — Leadership IP</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <span class="eyebrow">Contact</span>
+    <h2>Ready for a Meeting.</h2>
+    <p class="contact-logline">
+      "Humanity resurrects the two greatest naval commanders in history.<br>
+      One from the East. One from the West.<br>
+      But only together can they defeat the enemy rising from the abyss."
+    </p>
+    <p style="color:var(--gray);font-size:.9rem;max-width:500px;margin:0 auto 2rem">
+      Full pitch deck, screenplay, and world-bible available upon request.
+    </p>
+    <div class="hero-cta-group">
+      <a class="btn btn-solid" href="mailto:seamenuniverse@gmail.com">Request Pitch Deck</a>
+    </div>
+    <div class="contact-details">
+      <div><strong style="color:var(--white)">Ki Ho Kim</strong> · Creator &amp; Rights Holder</div>
+      <div><a href="mailto:seamenuniverse@gmail.com">seamenuniverse@gmail.com</a></div>
+      <div>+82-10-3345-0579</div>
+      <div><a href="https://www.seamenuniverse.com">www.seamenuniverse.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <span class="brand">SEAMEN UNIVERSE</span> &nbsp;·&nbsp;
+    © 2026 Ki Ho Kim &nbsp;·&nbsp;
+    Korean Copyright C-2026-010486 &nbsp;·&nbsp;
+    WGA West #2329744 / #2333497 &nbsp;·&nbsp;
+    All rights reserved
+  </p>
+</footer>
+
+</body>
+</html>
