@@ -284,7 +284,7 @@
     }
     .enemy-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .enemy-images img {
-      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      width: 100%; object-fit: contain; background: var(--navy-mid);
       filter: hue-rotate(10deg) saturate(1.2);
       border: 1px solid var(--border);
     }
