@@ -455,10 +455,8 @@
       font-size: 1.1rem;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; text-decoration: none;
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s, background .2s;
+      transition: background .2s;
     }
-    #topBtn.visible { opacity: 1; pointer-events: auto; }
     #topBtn:hover { background: var(--gold); color: var(--navy); }
 
     @media (prefers-reduced-motion: reduce) {
@@ -771,16 +769,7 @@
 <!-- TOP BUTTON -->
 <a id="topBtn" href="#hero" title="Back to Top">↑</a>
 
-<script>
-  var topBtn = document.getElementById('topBtn');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      topBtn.classList.add('visible');
-    } else {
-      topBtn.classList.remove('visible');
-    }
-  });
-</script>
+
 
 </body>
 </html>
