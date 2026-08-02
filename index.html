@@ -445,6 +445,22 @@
       .contrast-table { font-size: .78rem; }
       .contrast-table td, .contrast-table th { padding: .7rem .8rem; }
     }
+    /* ── TOP BUTTON ─────────────────────────────── */
+    .top-btn {
+      position: absolute; bottom: 1.8rem; right: 1.8rem;
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold-dim);
+      background: rgba(7,17,31,.85);
+      color: var(--gold);
+      font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+      z-index: 10;
+    }
+    .top-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    section { position: relative; }
+
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; }
     }
@@ -520,6 +536,8 @@
   </div>
 </section>
 
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
+
 <!-- COMMANDERS -->
 <section id="commanders">
   <div class="section-inner">
@@ -584,6 +602,8 @@
   </div>
 </section>
 
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
+
 <!-- ENEMY -->
 <section id="enemy">
   <div class="section-inner">
@@ -608,6 +628,8 @@
     </div>
   </div>
 </section>
+
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
 
 <!-- TURTLE SHIP -->
 <section id="turtleship">
@@ -665,6 +687,8 @@
   </div>
 </section>
 
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
+
 <!-- IP & FRANCHISE -->
 <section id="ip">
   <div class="section-inner">
@@ -716,6 +740,8 @@
   </div>
 </section>
 
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -740,6 +766,8 @@
     </div>
   </div>
 </section>
+
+  <a class="top-btn" href="#hero" title="Back to Top">↑</a>
 
 <!-- FOOTER -->
 <footer>
